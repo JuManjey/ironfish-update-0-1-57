@@ -1,0 +1,27 @@
+curl -fsSL https://deb.nodesource.com/setup_18.x | sudo -E bash - &&\
+sudo apt-get install -y nodejs
+curl https://sh.rustup.rs -sSf | sh -s -- -y
+npm install --global yarn
+apt install curl make clang pkg-config libssl-dev build-essential git jq cargo -y
+wget -q -O ironfish.sh https://api.nodes.guru/ironfish.sh && chmod +x ironfish.sh && sudo /bin/bash ironfish.sh && unalias ironfish 2>/dev/null
+
+ironfish wallet:import
+
+ironfish config:set enableTelemetry true
+mkdir -p $HOME/.ironfish/keys
+ironfish wallet:export $IRONFISH_WALLET $HOME/.ironfish/keys/$IRONFISH_WALLET.json
+systemctl stop ironfishd-miner
+systemctl disable ironfishd-miner
+
+
+
+
+
+
+
+
+
+
+
+
+
